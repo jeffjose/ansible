@@ -1,0 +1,26 @@
+# This is the base configuration for all machines
+# 
+# Jeffrey Jose | jeffjose | Oct 26, 2015
+#
+- hosts: all
+  tasks:
+    - name: Copy cshrc
+      copy: src=/home/jeffjose/.cshrc dest=/home/jeffjose/.cshrc
+    - name: Copy aliases
+      copy: src=/home/jeffjose/.aliases dest=/home/jeffjose/.aliases
+    - name: Copy prompt
+      copy: src=/home/jeffjose/.prompt dest=/home/jeffjose/.prompt
+    - name: Copy precmd
+      copy: src=/home/jeffjose/.precmd dest=/home/jeffjose/.precmd
+    - name: Install tcsh
+      apt : name=tcsh
+      sudo: yes
+    - name   : Make tcsh default shell (root)
+      command: chsh -s /bin/tcsh
+      sudo   : yes
+    - name: Make tcsh default shell (jeffjose)
+      user: name=jeffjose shell=/bin/tcsh
+      sudo: yes
+    - name: Copy /etc/hosts
+      copy: src=/etc/hosts dest=/etc/hosts
+      sudo: yes
