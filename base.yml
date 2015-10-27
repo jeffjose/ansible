@@ -33,7 +33,7 @@
       apt : name=tcsh
       sudo: yes
     - name: Install utilities
-      apt : name=vim,htop,python-pip
+      apt : name=vim,htop,python-pip,ansible
       sudo: yes
 
       # Change default shell
