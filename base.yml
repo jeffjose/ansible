@@ -4,6 +4,7 @@
 #
 - hosts: all
   tasks:
+      # Dotfiles
     - name: Copy cshrc
       copy: src=/home/jeffjose/.cshrc dest=/home/jeffjose/.cshrc
     - name: Copy aliases
@@ -16,6 +17,8 @@
       copy: src=/home/jeffjose/.precmd dest=/home/jeffjose/.precmd
     - name: Copy screenrc
       copy: src=/home/jeffjose/.screenrc dest=/home/jeffjose/.screenrc
+
+      # Directories
     - name: Copy screen/ files
       synchronize: src=/home/jeffjose/.screen/ dest=/home/jeffjose/.screen/ recursive=yes delete=yes
     - name: Copy xrandr config
@@ -24,18 +27,24 @@
       copy: src=/home/jeffjose/.vimrc dest=/home/jeffjose/.vimrc
     - name: Copy vim/ files
       synchronize: src=/home/jeffjose/.vim/ dest=/home/jeffjose/.vim/ recursive=yes delete=yes
+
+      # apt-get
     - name: Install tcsh
       apt : name=tcsh
       sudo: yes
-    - name: Install vim
-      apt : name=vim
+    - name: Install utilities
+      apt : name=vim,htop,python-pip
       sudo: yes
+
+      # Change default shell
     - name   : Make tcsh default shell (root)
       command: chsh -s /bin/tcsh
       sudo   : yes
     - name: Make tcsh default shell (jeffjose)
       user: name=jeffjose shell=/bin/tcsh
       sudo: yes
+
+      # Copy config files
     - name: Copy /etc/hosts
       copy: src=/etc/hosts dest=/etc/hosts
       sudo: yes
