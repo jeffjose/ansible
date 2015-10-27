@@ -14,6 +14,12 @@
       copy: src=/home/jeffjose/.prompt dest=/home/jeffjose/.prompt
     - name: Copy precmd
       copy: src=/home/jeffjose/.precmd dest=/home/jeffjose/.precmd
+    - name: Copy screenrc
+      copy: src=/home/jeffjose/.screenrc dest=/home/jeffjose/.screenrc
+    - name: Copy screen files
+      synchronize: src=/home/jeffjose/.screen/ dest=/home/jeffjose/.screen/ recursive=yes delete=yes
+    - name: Copy xrandr config
+      synchronize: src=/home/jeffjose/.screenlayout/ dest=/home/jeffjose/.screenlayout/ recursive=yes delete=yes
     - name: Install tcsh
       apt : name=tcsh
       sudo: yes
