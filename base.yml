@@ -8,6 +8,8 @@
       copy: src=/home/jeffjose/.cshrc dest=/home/jeffjose/.cshrc
     - name: Copy aliases
       copy: src=/home/jeffjose/.aliases dest=/home/jeffjose/.aliases
+    - name: Copy aliases.sensitive
+      copy: src=/home/jeffjose/.aliases.sensitive dest=/home/jeffjose/.aliases.sensitive
     - name: Copy prompt
       copy: src=/home/jeffjose/.prompt dest=/home/jeffjose/.prompt
     - name: Copy precmd
