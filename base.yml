@@ -16,12 +16,19 @@
       copy: src=/home/jeffjose/.precmd dest=/home/jeffjose/.precmd
     - name: Copy screenrc
       copy: src=/home/jeffjose/.screenrc dest=/home/jeffjose/.screenrc
-    - name: Copy screen files
+    - name: Copy screen/ files
       synchronize: src=/home/jeffjose/.screen/ dest=/home/jeffjose/.screen/ recursive=yes delete=yes
     - name: Copy xrandr config
       synchronize: src=/home/jeffjose/.screenlayout/ dest=/home/jeffjose/.screenlayout/ recursive=yes delete=yes
+    - name: Copy vimrc
+      copy: src=/home/jeffjose/.vimrc dest=/home/jeffjose/.vimrc
+    - name: Copy vim/ files
+      synchronize: src=/home/jeffjose/.vim/ dest=/home/jeffjose/.vim/ recursive=yes delete=yes
     - name: Install tcsh
       apt : name=tcsh
+      sudo: yes
+    - name: Install vim
+      apt : name=vim
       sudo: yes
     - name   : Make tcsh default shell (root)
       command: chsh -s /bin/tcsh
