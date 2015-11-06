@@ -17,6 +17,8 @@
       copy: src=/home/jeffjose/.precmd dest=/home/jeffjose/.precmd
     - name: Copy screenrc
       copy: src=/home/jeffjose/.screenrc dest=/home/jeffjose/.screenrc
+    - name: Copy gitconfig
+      copy: src=/home/jeffjose/.gitconfig dest=/home/jeffjose/.gitconfig
 
       # Directories
     - name: Copy screen/ files
@@ -33,12 +35,18 @@
       apt : name=tcsh
       sudo: yes
     - name: Install utilities
-      apt : name=vim,htop,python-pip,ansible,screen
+      apt : name=vim,htop,python-pip,ansible,screen,git,git-gui
       sudo: yes
 
       # easy_install python packages
-    - name: Install Python Packages
+    - name: Install supervisor
       easy_install: name=supervisor
+      sudo: yes
+    - name: Install simplejson
+      easy_install: name=simplejson
+      sudo: yes
+    - name: Install tornado
+      easy_install: name=tornado
       sudo: yes
 
       # Change default shell
